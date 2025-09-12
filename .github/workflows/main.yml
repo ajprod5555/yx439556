@@ -1,0 +1,21 @@
+
+name: .. ..2 google script ..
+on: push
+run-name: .. ..2 ${{ github.actor }} ..
+jobs:
+  yxatt885:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: install clasp
+        run: npm install -g @google/clasp
+      - name: create > ~/.clasprc.json ## this is for the global login
+        run: |
+          cat << EOS > ~/.clasprc.json
+          ${{ secrets.YXATT885_CLASP_RC_JSON }}
+          EOS
+      - name: push to clasp
+        run: clasp push -f
+      - name: test
+        run: clasp update-deployment AKfycbyU9XsqqhqhmcUE-cKUJlTX0gc3n7nOphRF2Sa7YN-UGpiTAuq1-NSGcJOX0CI93zWg
