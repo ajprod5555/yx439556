@@ -1,0 +1,7 @@
+
+deployment:
+  app: att-n
+
+service:
+  type: ClusterIP
+  port: 80
